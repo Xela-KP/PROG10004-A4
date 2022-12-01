@@ -1,4 +1,3 @@
-from Garage import Garage
 from constants import *
 
 
@@ -16,11 +15,11 @@ class Program:
                         input("Specify Model: "),
                         int(input("Specify Year: "))
                     )
-                    print("Vehicle Successfully parked")
+                    print("Vehicle Successfully Parked")
                 elif user_input == 3:
                     garage.remove_vehicle(
                         int(input("Specify lot number to remove vehicle from: ")))
-                    print("Vehicle Successfully removed")
+                    print("Vehicle Successfully Removed")
                 elif user_input == 4:
                     break
                 else:

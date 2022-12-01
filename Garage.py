@@ -10,7 +10,7 @@ class Garage:
         if vehicles == {}:
             self.vehicles = vehicles
         else:
-            self.vehicles = self.load_vehicles(vehicles)
+            self.load_vehicles(vehicles)
         self.max_occupancy = 5
 
     def __repr__(self) -> str:
@@ -44,11 +44,10 @@ Lot: {}
             raise Exception("No vehicle parked in specified lot")
         self.vehicles.pop(str(lot_number))
 
-    def load_vehicles(self, vehicles: dict) -> dict:
+    def load_vehicles(self, vehicles: dict) -> None:
         for lot_number, vehicle_spec in vehicles.items():
             vehicles[lot_number] = Vehicle(
                 vehicle_spec[MAKE], vehicle_spec[MODEL], vehicle_spec[YEAR])
-        return vehicles
 
     def update_database(self) -> None:
         new_garage = {}
