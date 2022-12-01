@@ -7,10 +7,9 @@ import os
 
 class Garage:
     def __init__(self, vehicles={}) -> None:
-        if vehicles == {}:
-            self.vehicles = vehicles
-        else:
-            self.load_vehicles(vehicles)
+        self.vehicles = vehicles
+        if not vehicles == {}:
+            self.load_vehicles()
         self.max_occupancy = 5
 
     def __repr__(self) -> str:
@@ -36,6 +35,7 @@ Lot: {}
         lots_used = set(self.vehicles.keys())
         available_lots = [lot for lot in lots if lot not in lots_used]
         self.vehicles[available_lots[0]] = Vehicle(make, model, year)
+        self.vehicles = dict(sorted(self.vehicles.items()))
 
     def remove_vehicle(self, lot_number) -> None:
         if lot_number < 1 or 5 < lot_number:
@@ -44,9 +44,9 @@ Lot: {}
             raise Exception("No vehicle parked in specified lot")
         self.vehicles.pop(str(lot_number))
 
-    def load_vehicles(self, vehicles: dict) -> None:
-        for lot_number, vehicle_spec in vehicles.items():
-            vehicles[lot_number] = Vehicle(
+    def load_vehicles(self) -> None:
+        for lot_number, vehicle_spec in self.vehicles.items():
+            self.vehicles[lot_number] = Vehicle(
                 vehicle_spec[MAKE], vehicle_spec[MODEL], vehicle_spec[YEAR])
 
     def update_database(self) -> None:

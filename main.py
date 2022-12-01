@@ -12,4 +12,4 @@ if __name__ == "__main__":
     else:
         with io.open(os.path.join(ROOT, DB_NAME), 'w') as database:
             database.write(json.dumps({}))
-        Program.run(Garage({}))
+        Program.run(Garage())
