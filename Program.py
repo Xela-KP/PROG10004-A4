@@ -5,6 +5,7 @@ Program:
 module contains all user interaction logic
 '''
 from constants import *
+import DataPersistence
 
 
 class Program:
@@ -30,7 +31,7 @@ class Program:
                     break
                 else:
                     raise Exception("Input value not in range")
-                garage.update_database()
+                DataPersistence.update_database(garage)
 
             except Exception as e:
                 print(e, "Please try again")

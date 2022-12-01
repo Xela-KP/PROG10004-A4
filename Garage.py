@@ -8,9 +8,6 @@ Handles conversion of data, and updates the database
 '''
 from Vehicle import Vehicle
 from constants import *
-import io
-import json
-import os
 
 
 class Garage:
@@ -58,11 +55,3 @@ Lot: {}
         for lot_number, vehicle_spec in self.vehicles.items():
             self.vehicles[lot_number] = Vehicle(
                 vehicle_spec[MAKE], vehicle_spec[MODEL], vehicle_spec[YEAR])
-
-    def update_database(self) -> None:
-        new_garage = {}
-        for lot_number, vehicle in self.vehicles.items():
-            new_garage[lot_number] = {MAKE: vehicle.make,
-                                      MODEL: vehicle.model, YEAR: vehicle.year}
-        with io.open(os.path.join(ROOT, DB_NAME), 'w') as database:
-            database.write(json.dumps(new_garage))
