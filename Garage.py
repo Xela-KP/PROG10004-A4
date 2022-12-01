@@ -25,13 +25,9 @@ Lot: {}
                 vehicle.make,
                 vehicle.model,
                 vehicle.year)
+        if not collection:
+            return "Garage is empty"
         return collection
-
-    def load_vehicles(self, vehicles: dict) -> dict:
-        for lot_number, vehicle_spec in vehicles.items():
-            vehicles[lot_number] = Vehicle(
-                vehicle_spec[MAKE], vehicle_spec[MODEL], vehicle_spec[YEAR])
-        return vehicles
 
     def add_vehicle(self, make, model, year) -> None:
         if len(self.vehicles) >= 5:
@@ -47,6 +43,12 @@ Lot: {}
         if not str(lot_number) in self.vehicles.keys():
             raise Exception("No vehicle parked in specified lot")
         self.vehicles.pop(str(lot_number))
+
+    def load_vehicles(self, vehicles: dict) -> dict:
+        for lot_number, vehicle_spec in vehicles.items():
+            vehicles[lot_number] = Vehicle(
+                vehicle_spec[MAKE], vehicle_spec[MODEL], vehicle_spec[YEAR])
+        return vehicles
 
     def update_database(self) -> None:
         new_garage = {}
