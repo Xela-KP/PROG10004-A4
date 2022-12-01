@@ -1,3 +1,10 @@
+'''Assignment 4: CRUD Application
+PROG10004 Fall 2022
+
+Program:
+module contains constant variables to
+reduce logic error
+'''
 PATH = "./garage.json"
 DB_NAME = "garage.json"
 ROOT = "./"

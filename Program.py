@@ -1,3 +1,9 @@
+'''Assignment 4: CRUD Application
+PROG10004 Fall 2022
+
+Program:
+module contains all user interaction logic
+'''
 from constants import *
 
 

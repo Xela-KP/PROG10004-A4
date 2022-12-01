@@ -1,3 +1,11 @@
+'''Assignment 4: CRUD Application
+PROG10004 Fall 2022
+
+Garage:
+module acts as CRUD manager and
+storage for resource.
+Handles conversion of data, and updates the database
+'''
 from Vehicle import Vehicle
 from constants import *
 import io
@@ -6,6 +14,8 @@ import os
 
 
 class Garage:
+    """Acts as the storage and management for a resource <Vehicle>"""
+
     def __init__(self, vehicles={}) -> None:
         self.vehicles = vehicles
         if not vehicles == {}:
