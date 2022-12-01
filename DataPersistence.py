@@ -13,9 +13,8 @@ from constants import *
 
 def update_database(garage) -> None:
     new_garage = {}
-    for lot_number, vehicle in garage.vehicles.items():
-        new_garage[lot_number] = {MAKE: vehicle.make,
-                                  MODEL: vehicle.model, YEAR: vehicle.year}
+    for lot_number in garage.vehicles.keys():
+        new_garage[lot_number] = garage.vehicles[lot_number].get_vehicle_information()
     with io.open(os.path.join(ROOT, DB_NAME), 'w') as database:
         database.write(json.dumps(new_garage))
 

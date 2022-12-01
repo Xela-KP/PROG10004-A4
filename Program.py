@@ -20,14 +20,25 @@ class Program:
                     garage.add_vehicle(
                         input("Specify Make: "),
                         input("Specify Model: "),
-                        int(input("Specify Year: "))
+                        int(input("Specify Year: ")),
+                        input("Specify Color: ")
                     )
                     print("Vehicle Successfully Parked")
                 elif user_input == 3:
                     garage.remove_vehicle(
-                        int(input("Specify lot number to remove vehicle from: ")))
+                        int(input("Specify lot number to remove vehicle from: "))
+                    )
                     print("Vehicle Successfully Removed")
                 elif user_input == 4:
+                    print(garage.search_vehicle(
+                        input("Specify Make: "), input("Specify Model: ")))
+                elif user_input == 5:
+                    garage.paint_vehicle(
+                        int(input("Specify lot number of vehicle to  paint: ")),
+                        input("Specify Color to paint vehicle: ")
+                    )
+                    print("Successfully painted vehicle")
+                elif user_input == 6:
                     break
                 else:
                     raise Exception("Input value not in range")
